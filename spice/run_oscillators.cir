@@ -1,0 +1,37 @@
+* This is the toplevel circuit
+.include nand.cir
+.include inverter.sp
+.include ring_oscillator_0.cir
+.include ring_oscillator_1.cir
+.include ring_oscillator_2.cir
+.include ring_oscillator_3.cir
+.include ring_oscillator_4.cir
+.include ring_oscillator_5.cir
+.include ring_oscillator_6.cir
+.include ring_oscillator_7.cir
+
+.global vdd
+.global vss
+
+VDD vdd 0 dc 1.5v
+VSS vss 0 dc 0v
+
+VEN en 0 pwl 0n 0v 4n 0v 5n 1.5v 100n 1.5v
+
+.temp 27
+
+XRO0 en out0 ring_oscillator_0
+XRO1 en out1 ring_oscillator_1
+XRO2 en out2 ring_oscillator_2
+XRO3 en out3 ring_oscillator_3
+XRO4 en out4 ring_oscillator_4
+XRO5 en out5 ring_oscillator_5
+XRO6 en out6 ring_oscillator_6
+XRO7 en out7 ring_oscillator_7
+
+.control
+tran 10p 200n
+plot v(en) v(out0) v(out1) v(out2) v(out3) v(out4) v(out5) v(out6) v(out7) xlimit 90n 100n
+.endc
+
+.end
