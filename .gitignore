@@ -1,7 +1,5 @@
 *.bak
-*.qpf
 *.qdf
-*.qsf
 *.qws
 *.v
 vhdl/qar_info.json
