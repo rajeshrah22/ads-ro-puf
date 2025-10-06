@@ -14,7 +14,11 @@ entity toplevel is
 end entity toplevel;
 
 architecture top of toplevel is
-	-- TODO: any signal declarations you may need
+	constant initial_enable: std_logic := '1';
+	signal ctr_to_puf_enable: std_logic;
+	signal challenge:	std_logic_vector(2*positive(ceil(log2(real(ro_count / 2)))) - 1 downto 0);
+	signal store_respose: std_logic;
+	signal puf_reset: std_logic;
 begin
 
 	-- TODO: make instance of ro_puf
@@ -22,16 +26,36 @@ begin
 		generic map (
 			-- add generic information
 			-- should come from toplevel's generic list
+			ro_length => ro_length,
+			ro_count => ro_count
 		)
 		port map (
 			-- add port information
 			-- should use some signals internal to this architecture
 			-- should use the `reset' input from toplevel
+			reset => reset,
+			enable => ctr_to_puf_enable,
+			challenge => challenge
+			response => bram --TODO Make BRAM
 		);
 
 	-- TODO: control unit
 	-- use control unit entity from blackboard, make entity here
 	-- uses the `clock' input and the `reset' input from toplevel
+	c_unit: entity.work.control_unit(fsm)
+		generic map (
+			clock_frequency => 50
+		);
+		port map (
+			enable => initial_enable,
+			clock => clock,
+			reset => reset,
+			counter_enable => ctr_to_puf_enable, -- correct????
+			challenge => challenge,
+			store_response => store_respose,
+			counter_reset => puf_reset,
+			done => done
+		);
 
 	-- TODO: BRAM
 	-- create a BRAM using the IP Catalog, instance it here

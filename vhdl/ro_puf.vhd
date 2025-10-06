@@ -81,7 +81,7 @@ begin
 		-- instance of a ring oscillator, the enable input comes from this
 		-- entity's port declaration, the output goes into osc_out(i)
 		r0:	ring_oscillator
-			port_map (
+			port map (
 				enable => enable,
 				osc_out => osc_out(i)
 			);
@@ -90,7 +90,7 @@ begin
 	-- TODO: generate group_b
 	group_b: for i in ro_count / 2 to ro_count - 1 generate
 		r0:	ring_oscillator
-			port_map (
+			port map (
 				enable => enable,
 				osc_out => osc_out(i)
 			);
