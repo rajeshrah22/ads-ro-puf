@@ -19,6 +19,7 @@ architecture top of toplevel is
 	signal challenge:	std_logic_vector(2*positive(ceil(log2(real(ro_count / 2)))) - 1 downto 0);
 	signal store_respose: std_logic;
 	signal puf_reset: std_logic;
+	signal response: 
 begin
 
 	-- TODO: make instance of ro_puf
@@ -36,7 +37,7 @@ begin
 			reset => reset,
 			enable => ctr_to_puf_enable,
 			challenge => challenge
-			response => bram --TODO Make BRAM
+			response => response --TODO Make BRAM
 		);
 
 	-- TODO: control unit
@@ -60,5 +61,11 @@ begin
 	-- TODO: BRAM
 	-- create a BRAM using the IP Catalog, instance it here
 	-- make sure you enable the In-System Memory Viewer!
+	ram: bram port map (
+		address	 => challenge,
+		clock	 => clock,
+		data	 => response,
+		wren	 => store_response,
+	);
 
 end architecture top;
