@@ -12,12 +12,12 @@
 
 .global vdd
 .global vss
-VDD vdd 0 dc 1v
+VDD vdd 0 dc 1.2v
 VSS vss 0 dc 0v
 
 VEN en 0 pwl 0n 0v 4n 0v 5n 1v 100n 1v
 
-*.temp 54
+.temp 13.5
 
 XRO0 en out0 ring_oscillator_0
 XRO1 en out1 ring_oscillator_1
@@ -29,11 +29,59 @@ XRO6 en out6 ring_oscillator_6
 XRO7 en out7 ring_oscillator_7
 
 .control
-tran 10p 100n
-run
-*save v(e) v(out0) v(out1) v(out2) v(out3) v(out4) v(out5) v(out6) v(out7)
-plot v(en) v(out0) v(out1) v(out2) v(out3) v(out4) v(out5) v(out6) v(out7) xlimit 90n 100n
-*v(out7)
+  set wr_vecnames
+  set wr_singlescale
+
+  alter VDD dc = 1.2
+  set temp = 13.5
+  tran 10p 100n
+  run
+  linearize
+  wrdata all-1_2V-13_5C.csv all
+  reset
+
+  alter VDD dc = 1.2
+  set temp = 27
+  tran 10p 100n
+  run
+  linearize
+  wrdata all-1_2V-27C.csv all
+  reset
+
+  alter VDD dc = 1.2
+  set temp = 54
+  tran 10p 100n
+  run
+  linearize
+  wrdata all-1_2V-54C.csv all
+  reset
+
+  alter VDD dc = 1.5
+  set temp = 27
+  tran 10p 100n
+  run
+  linearize
+  wrdata all-1_5V-27C.csv all
+  reset
+
+  alter VDD dc = 1.0
+  set temp = 27
+  tran 10p 100n
+  run
+  linearize
+  wrdata all-1V-27C.csv all
+  reset
 .endc
+
+*.control
+*tran 10p 100n
+*run
+**save v(e) v(out0) v(out1) v(out2) v(out3) v(out4) v(out5) v(out6) v(out7)
+*linearize
+*set wr_vecnames
+*set wr_singlescale
+*wrdata all-1V_13_5C.csv all
+**v(out7)
+*.endc
 
 .end
