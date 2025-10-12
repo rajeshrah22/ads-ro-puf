@@ -1,3 +1,6 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
 package project_pkg is
 	component ring_oscillator
 		generic (
