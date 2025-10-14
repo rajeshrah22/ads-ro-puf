@@ -1,3 +1,6 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
 package project_pkg is
 	component ring_oscillator
 		generic (
@@ -9,13 +12,3 @@ package project_pkg is
 		);
 	end component ring_oscillator;
 end package project_pkg;
-
-
--- component instance
-r0: ring_oscillator
-	port_map (
-		enable => enable,
-		osc_out => enable
-	);
-
-signal inv_chain: std_logic_vector(0 to ro_length - 1);

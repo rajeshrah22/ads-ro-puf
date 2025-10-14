@@ -4,6 +4,8 @@ use ieee.numeric_std.all;
 use ieee.math_real.log2;	-- bring in log2()
 use ieee.math_real.ceil;	-- bring in ceil()
 
+use work.project_pkg.all;
+
 entity ro_puf is
 	generic (
 		ro_length:	positive := 13;
@@ -80,7 +82,7 @@ begin
 	group_a: for i in 0 to ro_count / 2 - 1 generate
 		-- instance of a ring oscillator, the enable input comes from this
 		-- entity's port declaration, the output goes into osc_out(i)
-		r0:	ring_oscillator
+		r0:	work.project_pkg.ring_oscillator
 			port map (
 				enable => enable,
 				osc_out => osc_out(i)
@@ -106,8 +108,8 @@ begin
 			elsif rising_edge(osc_out(i)) then
 				if enable = '1' then
 				-- TODO: increment counter by 1
-					if counter(i) = count_type'range
-						counter(i) <= 0
+					if counter(i) = count_type'high then
+						counter(i) <= 0;
 					else
 						counter(i) <= counter(i) + 1;
 					end if;
