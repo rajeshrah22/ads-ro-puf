@@ -1,0 +1,12 @@
+*.bak
+*.qdf
+*.qws
+*.v
+vhdl/qar_info.json
+vhdl/db
+vhdl/bram.vhd
+vhdl/bram.cmp
+vhdl/bram.qip
+vhdl/bram.cmp
+vhdl/bram_inst.vhd
+vhdl/greybox_tmp
