@@ -82,7 +82,7 @@ begin
 		end if;
 	end process challenge_process;
 	
-	transition_function: process(state, wait_counter, last_challenge) is
+	transition_function: process(state, wait_counter, last_challenge, challenge_counter) is
 	begin
 		case state is
 			when reset_state => next_state <= enable_state;
