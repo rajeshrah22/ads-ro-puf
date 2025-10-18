@@ -19,7 +19,7 @@ def main():
     input_files = ["all-1_2V-13_5C.csv", "all-1_2V-27C.csv", "all-1_2V-54C.csv", "all-1_5V-27C.csv", "all-1V-27C.csv"]
     output_files = []
     for i in range(len(input_files)):
-        output_files.append(input_files[i][:-3] + "png")
+        output_files.append(input_files[i][:-3] + "-freq.png")
 
     volts = [1.2, 1.2, 1.2, 1.5, 1.0]
 
