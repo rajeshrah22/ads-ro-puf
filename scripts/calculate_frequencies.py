@@ -19,7 +19,9 @@ def print_fundamental_frequencies(path_to_data, vdd=1.2):
     for col in range(8):
         dft = np.fft.fft(normalized[:,col])
         position = np.argmax(np.abs(dft[:center_freq]))
-        print(f'{col} {buckets[position]}')
+        value = buckets[position]
+        ghz = value / 1e+9
+        print(f'{col} {ghz:.3f} Ghz')
 
 
 def plot_freq_domain(time, normalized, buckets):

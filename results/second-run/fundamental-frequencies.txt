@@ -1,0 +1,50 @@
+results/second-run/all-1_2V-13_5C.csv
+0 2.042 Ghz
+1 2.011 Ghz
+2 2.042 Ghz
+3 2.042 Ghz
+4 2.053 Ghz
+5 2.021 Ghz
+6 2.053 Ghz
+7 2.042 Ghz
+=============================
+results/second-run/all-1_2V-27C.csv
+0 1.979 Ghz
+1 1.958 Ghz
+2 1.979 Ghz
+3 1.979 Ghz
+4 1.990 Ghz
+5 1.969 Ghz
+6 1.990 Ghz
+7 1.990 Ghz
+=============================
+results/second-run/all-1_2V-54C.csv
+0 1.874 Ghz
+1 1.842 Ghz
+2 1.874 Ghz
+3 1.874 Ghz
+4 1.884 Ghz
+5 1.853 Ghz
+6 1.884 Ghz
+7 1.874 Ghz
+=============================
+results/second-run/all-1_5V-27C.csv
+0 1.927 Ghz
+1 1.895 Ghz
+2 1.916 Ghz
+3 1.916 Ghz
+4 1.927 Ghz
+5 1.895 Ghz
+6 1.937 Ghz
+7 1.927 Ghz
+=============================
+results/second-run/all-1V-27C.csv
+0 1.800 Ghz
+1 1.769 Ghz
+2 1.800 Ghz
+3 1.800 Ghz
+4 1.811 Ghz
+5 1.779 Ghz
+6 1.811 Ghz
+7 1.800 Ghz
+=============================
